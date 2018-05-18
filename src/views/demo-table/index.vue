@@ -16,7 +16,7 @@
                         <Input v-model="editInfo.name"></Input>
                     </FormItem>
                     <FormItem label="头像">
-                        <UploadFile :model.sync="editInfo.avatar" :uploadUrl="'uploadFile'"></UploadFile>
+                        <imgUpload :model.sync="editInfo.avatar" :uploadUrl="'uploadFile'"></imgUpload>
                     </FormItem>
                 </Form>
             </div>
@@ -26,10 +26,10 @@
 
 <script>
     import BaseTable from '@/components/baseTable';
-    import UploadFile from '@/components/uploadFile'
+    import imgUpload from '@/components/imgUpload'
     export default {
         components: {
-            BaseTable, UploadFile
+            BaseTable, imgUpload
         },
         data() {
             return {

@@ -46,7 +46,7 @@ function filterNull(o) {
 
 function apiAxios(method, url, params, success) {
     let config = {}
-    if(typeof(url) !== 'object'){
+    if (typeof (url) !== 'object') {
         if (typeof (params) === 'function') {
             success = params
             params = null
@@ -58,10 +58,10 @@ function apiAxios(method, url, params, success) {
         config.url = url;
         config.params = params;
         config.success = success;
-    }else{
+    } else {
         config = url;
     }
- 
+
     return axios({
         method: method,
         url: config.url,
@@ -76,6 +76,9 @@ function apiAxios(method, url, params, success) {
             if (data && config.isJson) {
                 headers['Content-Type'] = 'application/json;charset=utf-8';
                 return JSON.stringify(data);
+            } else if (data && config.isFile) {
+                headers['Content-Type'] = 'multipart/form-data';
+                return data;
             } else {
                 headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
                 let keys2 = Object.keys(data);
@@ -127,9 +130,9 @@ function apiAxios(method, url, params, success) {
         }
 
         if (typeof (config.mustCall) === 'function') {
-            setTimeout(()=>{
+            setTimeout(() => {
                 config.mustCall()
-            },260)
+            }, 260)
         }
     }).catch(err => {
         if (typeof (config.excep) === 'function') {
@@ -147,9 +150,9 @@ function apiAxios(method, url, params, success) {
         }
         console.log(config)
         if (typeof (config.mustCall) === 'function') {
-            setTimeout(()=>{
+            setTimeout(() => {
                 config.mustCall()
-            },260)
+            }, 260)
         }
     })
 
