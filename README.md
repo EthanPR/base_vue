@@ -1,6 +1,6 @@
 # vue_base
 
-> 基于vue+iview的后台管理系统框架yarn
+> 基于vue+iview的后台管理系统框架
 
 ## Build Setup
 
